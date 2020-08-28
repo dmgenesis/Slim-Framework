@@ -1,8 +1,6 @@
 <?php
 use DI\Container;
 use Slim\Factory\AppFactory;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 
 require __DIR__ .'/../vendor/autoload.php';
 
@@ -16,6 +14,9 @@ $app = AppFactory::create();
 
 $middleware = require __DIR__ . '/../app/middleware.php';
 $middleware($app);
+
+$route = require __DIR__ . '/../app/routes.php';
+$route($app);
 
 $app->addErrorMiddleware(true, true, true);
 
